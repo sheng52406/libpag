@@ -33,3 +33,20 @@ done
 depsync
 git lfs prune
 git lfs pull
+
+# apply patched files
+if [[ $? == 0 ]]; then
+  CMAKE_PATCHED=vendor_patched/CMake.js
+  PLATFORM_PATCHED=vendor_patched/Platform.js
+
+  if test -f ${CMAKE_PATCHED}; then
+    cp -rf ${CMAKE_PATCHED} vendor_tools/
+  fi
+
+  if test -f ${PLATFORM_PATCHED}; then
+    cp -rf ${PLATFORM_PATCHED} vendor_tools/
+  fi
+
+  echo "Patched files applied."
+fi
+# patched files applied

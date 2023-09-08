@@ -19,12 +19,15 @@ android {
             cmake {
                 arguments "-DANDROID_STL=c++_static",
                         "-DPAG_USE_LIBAVC=OFF",
-                        "-DPAG_USE_FFAVC=ON"
+                        "-DPAG_USE_FFAVC=ON",
+                        // 这里需要多加一个 cmake 的 flag {@
+                        "-DANDROID=ON"
+                        // @}
             }
         }
 
         ndk {
-            abiFilters "armeabi-v7a", "arm64-v8a"
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86_64"
         }
     }
     sourceSets {
